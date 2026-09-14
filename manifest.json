@@ -1,0 +1,18 @@
+{
+  "name": "ZENOVA \u2014 Tic Tac Toe",
+  "short_name": "ZENOVA",
+  "description": "An ultra-premium Tic Tac Toe experience.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#080a12",
+  "theme_color": "#090b14",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

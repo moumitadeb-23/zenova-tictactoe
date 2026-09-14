@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#090b14">
+  <meta name="description" content="ZENOVA — an ultra-premium Tic Tac Toe experience.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="ZENOVA">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon.svg">
+  <link rel="stylesheet" href="style.css?v=2.2">
+  <title>ZENOVA — Tic Tac Toe</title>
+</head>
+<body>
+  <div id="splash" class="splash" aria-hidden="true">
+    <div class="splash-orb"></div>
+    <div class="brand-mark">Z</div>
+    <div class="splash-name">ZENOVA</div>
+    <div class="splash-sub">TIC TAC TOE</div>
+  </div>
+
+  <div class="ambient ambient-a"></div>
+  <div class="ambient ambient-b"></div>
+  <div class="grain"></div>
+
+  <main class="app-shell">
+    <header class="topbar">
+      <button class="brand-button" id="homeBtn" aria-label="ZENOVA home">
+        <span class="mini-mark">Z</span>
+        <span><strong>ZENOVA</strong><small>TIC TAC TOE</small></span>
+      </button>
+      <div class="top-actions">
+        <button class="icon-btn" id="soundBtn" aria-label="Toggle sound" title="Sound">♫</button>
+        <button class="icon-btn" id="settingsBtn" aria-label="Open settings" title="Settings">⚙</button>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="eyebrow"><span></span> PREMIUM GAME EXPERIENCE</div>
+      <h1>Think. Place. <em>Dominate.</em></h1>
+      <p>A beautifully crafted Tic Tac Toe arena built for quick battles and big rematches.</p>
+    </section>
+
+    <section class="mode-switch glass" aria-label="Game mode">
+      <button class="mode active" data-mode="pvp">PLAYER <span>VS</span> PLAYER</button>
+      <button class="mode" data-mode="ai">PLAYER <span>VS</span> NOVA</button>
+    </section>
+
+    <section class="game-layout">
+      <aside class="score-card glass">
+        <div class="score-head"><span>SESSION SCORE</span><button id="resetScores" class="text-btn">RESET</button></div>
+        <div class="score-grid">
+          <div><span class="score-symbol x">X</span><strong id="scoreX">0</strong><small id="nameX">PLAYER X</small></div>
+          <div><span class="score-symbol draw">=</span><strong id="scoreD">0</strong><small>DRAWS</small></div>
+          <div><span class="score-symbol o">O</span><strong id="scoreO">0</strong><small id="nameO">PLAYER O</small></div>
+        </div>
+      </aside>
+
+      <section class="arena">
+        <div class="status-row">
+          <div class="turn-pill" id="turnPill"><span class="turn-dot"></span><span id="turnText">X'S TURN</span></div>
+          <div class="timer-wrap" id="timerWrap" hidden>
+            <div class="timer-ring"><svg viewBox="0 0 42 42"><circle class="track" cx="21" cy="21" r="17"></circle><circle id="timerProgress" class="progress" cx="21" cy="21" r="17"></circle></svg><b id="timerText">10</b></div>
+          </div>
+        </div>
+
+        <div class="board-shell">
+          <div class="board" id="board" role="grid" aria-label="Tic Tac Toe board"></div>
+          <div class="win-beam" id="winBeam" aria-hidden="true"></div>
+        </div>
+
+        <div class="controls">
+          <button class="primary-btn" id="playAgain"><span>↻</span> PLAY AGAIN</button>
+          <button class="secondary-btn" id="undoBtn"><span>↶</span> UNDO</button>
+        </div>
+
+        <div class="history glass">
+          <div class="history-head"><span>MOVE HISTORY</span><span id="moveCount">0 MOVES</span></div>
+          <div class="history-list" id="historyList"><span class="empty-history">Your moves will appear here.</span></div>
+        </div>
+      </section>
+
+      <aside class="side-card glass">
+        <div class="side-icon">✦</div>
+        <h2 id="sideTitle">LOCAL DUEL</h2>
+        <p id="sideText">Pass the device and challenge a friend.</p>
+        <div class="tip"><b>PRO TIP</b><span>Control the corners. Force the opponent to react.</span></div>
+      </aside>
+    </section>
+
+    <footer><span>ZENOVA v2.0</span><span>BUILT FOR THE NEXT MOVE</span><button class="text-btn" id="aboutBtn">ABOUT</button></footer>
+  </main>
+
+  <div class="modal-backdrop" id="settingsModal" hidden>
+    <section class="modal glass" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+      <button class="close-btn" data-close="settingsModal" aria-label="Close">×</button>
+      <div class="modal-kicker">CONTROL ROOM</div><h2 id="settingsTitle">Settings</h2>
+      <label class="setting"><span><b>Sound effects</b><small>Move, win, draw and UI tones</small></span><input id="soundToggle" type="checkbox"><i></i></label>
+      <label class="setting"><span><b>Dark mode</b><small>Deep cinematic interface</small></span><input id="darkToggle" type="checkbox"><i></i></label>
+      <label class="setting"><span><b>Move timer</b><small>10 seconds per move</small></span><input id="timerToggle" type="checkbox"><i></i></label>
+      <label class="setting"><span><b>High contrast</b><small>Stronger focus and board contrast</small></span><input id="contrastToggle" type="checkbox"><i></i></label>
+      <div class="difficulty-setting"><span><b>NOVA difficulty</b><small>Applies in Player vs Nova</small></span>
+        <select id="difficultySelect"><option value="easy">Easy</option><option value="medium">Medium</option><option value="hard">Hard — Unbeatable</option></select>
+      </div>
+      <div class="name-fields">
+        <label>PLAYER X<input id="nameXInput" maxlength="18" autocomplete="off"></label>
+        <label>PLAYER O<input id="nameOInput" maxlength="18" autocomplete="off"></label>
+      </div>
+      <button class="primary-btn full" id="saveSettings">SAVE SETTINGS</button>
+    </section>
+  </div>
+
+  <div class="modal-backdrop" id="aboutModal" hidden>
+    <section class="modal glass about-modal" role="dialog" aria-modal="true" aria-labelledby="aboutTitle">
+      <button class="close-btn" data-close="aboutModal" aria-label="Close">×</button>
+      <div class="brand-mark large">Z</div><div class="modal-kicker">ZENOVA</div>
+      <h2 id="aboutTitle">Made for the next move.</h2>
+      <p>ZENOVA is a lightweight, installable Tic Tac Toe web app with polished motion, persistent scores, accessible controls and an unbeatable Nova mode.</p>
+      <div class="credits"><span>VERSION <b>2.0.0</b></span><span>NO FRAMEWORKS</span><span>NO EXTERNAL ASSETS</span></div>
+    </section>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <canvas id="confetti" aria-hidden="true"></canvas>
+  <script src="script.js?v=2.2" defer></script>
+</body>
+</html>
