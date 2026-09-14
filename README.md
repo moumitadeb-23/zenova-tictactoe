@@ -2,6 +2,18 @@
 
 ZENOVA is a polished, installable Tic Tac Toe web app built with **vanilla HTML5, CSS3 and JavaScript**. No framework, npm install, bundler or external runtime dependency is required.
 
+## 🌐 Live Demo
+
+### 🚀 Play ZENOVA Online
+
+👉 **https://moumitadeb-23.github.io/zenova-tictactoe/**
+
+No installation or download is required.
+
+Open the link on desktop or mobile and start playing instantly. 🎮
+
+> 📱 **Mobile:** On supported browsers, ZENOVA can be added to your home screen and launched like a native app.
+
 ## ✨ Features
 
 - Player vs Player local mode
